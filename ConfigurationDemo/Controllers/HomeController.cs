@@ -5,26 +5,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ConfigurationDemo.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace ConfigurationDemo.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IConfiguration _configuration = null;
+
+        public HomeController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public IActionResult Index()
         {
-            return View();
-        }
+            var foo = _configuration["Foo"]; // contains the value "Bar"
+            var dbValue = _configuration["One"]; // contains the value "First Item"
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Foo"] = foo;
+            ViewData["DbValue"] = dbValue;
 
             return View();
         }

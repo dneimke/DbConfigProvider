@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ConfigurationDemo.Infrastructure.Configuration;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace ConfigurationDemo
 {
@@ -19,6 +15,15 @@ namespace ConfigurationDemo
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration(AddConfiguration)
                 .UseStartup<Startup>();
+
+
+        private static void AddConfiguration(WebHostBuilderContext context, IConfigurationBuilder builder)
+        {
+            var configuration = builder.Build();
+            var connectionString = configuration.GetConnectionString("Database");
+            builder.AddDemoDbProvider(options => options.UseSqlServer(connectionString));
+        }
     }
 }
