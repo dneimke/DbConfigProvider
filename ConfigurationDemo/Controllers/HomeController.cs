@@ -20,8 +20,8 @@ namespace ConfigurationDemo.Controllers
 
         public IActionResult Index()
         {
-            var foo = _configuration["Foo"]; // contains the value "Bar"
-            var dbValue = _configuration["One"]; // contains the value "First Item"
+            var foo = _configuration["Foo"]; // provided from FileProvider
+            var dbValue = _configuration["One"]; // provided by custom DbProvider
 
             ViewData["Foo"] = foo;
             ViewData["DbValue"] = dbValue;
