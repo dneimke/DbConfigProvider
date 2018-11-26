@@ -19,7 +19,8 @@ namespace ConfigurationDemo
                 .UseStartup<Startup>();
 
 
-        private static void AddConfiguration(WebHostBuilderContext context, IConfigurationBuilder builder)
+        private static void AddConfiguration(WebHostBuilderContext context, 
+            IConfigurationBuilder builder)
         {
             var configuration = builder.Build();
             var connectionString = configuration.GetConnectionString("Database");

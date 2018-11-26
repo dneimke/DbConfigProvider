@@ -9,6 +9,13 @@ and versioned from the database.
 Using a technique such as this allows administrative users to manage settings from a web 
 page.
 
+##Running the Demo
+
+Prior to running the demo, create the SQL database using the `Update-Database` powershell command.
+
+
+##Viewing the Source
+
 The custom provider is added in the Program.cs file
 
 ```C#

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace ConfigurationDemo.Infrastructure.Configuration
 {
-    public class DemoDbProvider : ConfigurationProvider, IConfigurationProvider
+    public class DemoDbProvider : ConfigurationProvider
     {
         private readonly Action<DbContextOptionsBuilder> _options;
 
@@ -35,7 +35,6 @@ namespace ConfigurationDemo.Infrastructure.Configuration
                     Data.Add(item.Title, item.Value);
                 }
             }
-
         }
 
         private static void EnsureItems(ApplicationDbContext context)
