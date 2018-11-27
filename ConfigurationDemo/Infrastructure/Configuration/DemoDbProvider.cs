@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ConfigurationDemo.Infrastructure.Configuration
 {
@@ -17,7 +18,7 @@ namespace ConfigurationDemo.Infrastructure.Configuration
 
         }
 
-        public async override void Load()
+        public override void Load()
         {
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
             _options(builder);
@@ -26,9 +27,9 @@ namespace ConfigurationDemo.Infrastructure.Configuration
             {
                 EnsureItems(context);
 
-                var items = await context.ApplicationConfigurationItem
+                var items = context.ApplicationConfigurationItem
                     .AsNoTracking()
-                    .ToListAsync();
+                    .ToList();
 
                 foreach (var item in items)
                 {
