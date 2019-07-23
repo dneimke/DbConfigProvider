@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<h2>Update Configuration</h2>
+
+<form name="ConfigForm" asp-action="ChangeConfig" method="post">
+    <div class="form-group">
+        <label for="NewValue">Enter new value</label>
+        <input type="text" required name="NewValue" />
+    </div>
+    <input type="submit" class="btn btn-default" value="Submit" />
+</form>

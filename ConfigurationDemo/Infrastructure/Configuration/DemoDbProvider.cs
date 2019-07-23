@@ -23,6 +23,8 @@ namespace ConfigurationDemo.Infrastructure.Configuration
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
             _options(builder);
 
+            Data.Clear();
+
             using (var context = new ApplicationDbContext(builder.Options))
             {
                 EnsureItems(context);

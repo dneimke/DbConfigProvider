@@ -13,12 +13,12 @@ namespace ConfigurationDemo
 {
     public class Startup
     {
-        public Startup()
+        public Startup(IConfiguration configuration)
         {
-            
+            Configuration = configuration;
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
